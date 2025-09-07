@@ -7,11 +7,13 @@ Background
 Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels. Because all of the containers share the services of a single operating system kernel, they use fewer resources than virtual machines.
 
 Linux Building Blocks
+
 Containers leverage linux kernel features cgroups and namespaces to provide resource constraints and application isolation respectively. They also use an union filesystem that enables images to be built upon common layers, making building and sharing images fast and efficient.
 
 Note: Docker did not invent containers. For example, LXC containers (https://linuxcontainers.org/) was implemented in 2008, five years before Docker launched. That being said, Docker made huge strides in developer experience, which helped container technologies gain mass adoption and remains one the most popular containerization platforms.
 
 Cgroups
+
 Cgroups are a Linux kernel feature which allow processes to be organized into hierarchical groups whose usage of various types of resources can then be limited and monitored.
 
 With cgroups, a container runtime is able to specify that a container should be able to use (for example):
@@ -22,6 +24,7 @@ Throttle reads to ZZ MB/s (blkio.throttle.read_bps_device)
 
 
 Namespaces
+
 A namespace wraps a global system resource in an abstraction that makes it appear to the processes within the namespace that they have their own isolated instance of the global resource.
 
 Changes to the global resource are visible to other processes that are members of the namespace, but are invisible to other processes.
@@ -31,6 +34,7 @@ With namespaces, a container runtime is able to keep processes outside of the co
 
 
 Union filesystems
+
 A union filesystem allows files and directories of separate file systems, known as branches, to be transparently overlaid, forming a single coherent file system.
 
 Contents of directories which have the same path within the merged branches will be seen together in a single merged directory, within the new, virtual filesystem.
@@ -40,6 +44,7 @@ This approach allows for efficient use of space because common layers can be sha
 
 
 Docker Application Architecture
+
 It is useful to break down the various components within the Docker ecosystem. The first distinction to make is between "Docker Desktop" and "Docker Engine".
 
 Docker Desktop is an application you install on development systems that provides:
